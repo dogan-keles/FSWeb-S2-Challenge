@@ -106,6 +106,9 @@ sonucu konsolde gözlemleyin */
 /* (Oto test var) cumleKur fonksiyonuna 5 parametre göndererek "Ben iyi bir yazılımcı olacağım!" stringini 
 elde edin, sonucu `bircumle` değişkenine atayın ve konsolde gözlemleyin */
 var bircumle;
+console.log(
+  (bircumle = cumleKur("Ben ", "iyi ", "bir ", "yazılımcı ", "olacağım!"))
+);
 
 /* kodlar buraya */
 
@@ -128,8 +131,11 @@ var bircumle;
 			5. Oluşturulan yeni dizi döndürülecek.
 	*/
 
-function cumlelereDonustur(/* kodlar buraya */) {
-  /* kodlar buraya */
+function cumlelereDonustur(cumlelerDizisi, boslukParametresi) {
+  const mapleCozum = cumlelerDizisi.map((test) => {
+    return test.join(boslukParametresi);
+  });
+  return mapleCozum;
 }
 
 /* GÖREV 2:
@@ -145,16 +151,25 @@ function cumlelereDonustur(/* kodlar buraya */) {
 			6. Oluşturulan paragraf döndürülecek
 	*/
 
-function paragrafOlustur(/* kodlar buraya */) {
-  /* kodlar buraya */
+function paragrafOlustur(cumlelerDizisi2, cbcumleKur, cbcumlelereDonustur) {
+  const gorev2Dizi = cbcumlelereDonustur(cumlelerDizisi2, " ");
+  const b = gorev2Dizi.filter((element, index) => {
+    if (index <= 9 && index % 2 == 1) {
+      return cbcumleKur(element);
+    }
+  });
+  let a = b.join("");
+  return cumleKur(a);
 }
+console.log(paragrafOlustur(cumleler, cumleKur, cumlelereDonustur));
 
 /* 	GÖREV 3:
 		Yukarıda isimleri sebzeler ve meyveler olan 2 dizi bulunmaktadır. Bu dizileri kullanarak aşağıdaki görevleri tamamlayın.
 			3a. meyveler dizisinin ilk ve son elemanlarını diziden çıkartın. (.pop ve .shift metodlarını kullanın)
  */
 //3a çözümü
-/* kodlar buraya */
+meyveler.pop();
+meyveler.shift();
 
 /* 			3b.  Bir tavşan ve bir kirpi arkadaşlar sebzeler dizimizin peşine düştü. Tavşan => 🐇 , Kirpi=> 🦔 , 
 Tavşanla kirpi sebzeleri ele geçirmek için bir plan kurdular. Tavşan diziye önden saldıracak, kirpi ise 
@@ -162,13 +177,21 @@ arkalarından dolaşacak. Varsayalım ki arkadaşların planları başarılı ol
 Kirpiyi dizinin son elemanına ekleyin 🦔
  */
 //3b çözümü
-/* kodlar buraya */
+sebzeler.unshift("🐇");
+sebzeler.push("🦔");
 
 /* 			3c. manav isminde bir dizi oluşturun.`meyveler` dizisi ilk elemanlara, `sebzeler` dizisi son 
 elemanlara denk gelecek şekilde, iki diziyi birleştirip sonucu manav dizisine aktarın. (.concat metodu)
  */
 //3c çözümü
-/* kodlar buraya */
+var manav;
+
+manav = [];
+
+const yeniSebzeler = sebzeler;
+const yeniMeyveler = meyveler;
+
+manav = yeniMeyveler.concat(yeniSebzeler);
 
 var manav;
 
@@ -189,8 +212,17 @@ var manav;
 			4. elde edilen string döndürülecek
  */
 
-function emojileriDonustur(/* kodlar buraya */) {
-  /* kodlar buraya */
+function emojileriDonustur(mesajParametresi, emojilerParametresi) {
+  for (let sembol in emojilerParametresi) {
+    const emoji = emojilerParametresi[sembol];
+    const kucukSembol = sembol.toLowerCase();
+    const buyukSembol = sembol.toUpperCase();
+
+    mesajParametresi = mesajParametresi.split(kucukSembol).join(emoji);
+    mesajParametresi = mesajParametresi.split(buyukSembol).join(emoji);
+  }
+
+  return mesajParametresi;
 }
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
